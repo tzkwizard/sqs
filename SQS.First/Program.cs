@@ -60,7 +60,7 @@ namespace SQS.First
                 Console.WriteLine("===========================================\n");
 
                 Sqsservice sqs=new Sqsservice();
-              //  sqs.ListAllQueue(endpoint);
+                sqs.ListAllQueue(endpoint);
 
                 //sqs.SendMessage(SqsUSeastEndpoint, 15, Queuename);
 
