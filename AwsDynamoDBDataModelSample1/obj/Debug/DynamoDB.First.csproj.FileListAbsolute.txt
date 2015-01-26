@@ -1,0 +1,8 @@
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\AwsDynamoDBDataModelSample1\bin\Debug\AwsDynamoDBDataModelSample1.exe.config
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\AwsDynamoDBDataModelSample1\bin\Debug\AwsDynamoDBDataModelSample1.exe
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\AwsDynamoDBDataModelSample1\bin\Debug\AwsDynamoDBDataModelSample1.pdb
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\AwsDynamoDBDataModelSample1\bin\Debug\AWSSDK.dll
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\AwsDynamoDBDataModelSample1\bin\Debug\AWSSDK.xml
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\AwsDynamoDBDataModelSample1\obj\Debug\AwsDynamoDBDataModelSample1.exe
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\AwsDynamoDBDataModelSample1\obj\Debug\AwsDynamoDBDataModelSample1.pdb
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\AwsDynamoDBDataModelSample1\obj\Debug\DynamoDB.First.csprojResolveAssemblyReference.cache
