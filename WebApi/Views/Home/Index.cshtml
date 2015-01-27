@@ -1,5 +1,18 @@
 ﻿<div id="body">
-  <section class="featured">
+    <form id="saveContactForm" method="post">
+        <h3>Create a new Contact</h3>
+        <p>
+            <label for="IpAddress">Ip Address:</label>
+            <input type="text" name="Id"/>
+        </p>
+        <p>
+            <label for="Discription">Discription:</label>
+            <input type="text" name="Name"/>
+        </p>
+        <input type="button" id="saveContact" value="Save"/>
+    </form>
+    <ul id="contacts"></ul>
+    <section class="featured">
         <div class="content-wrapper">
             <hgroup class="title">
                 <h1>Welcome to ASP.NET Web API!</h1>
@@ -43,3 +56,27 @@
         </ol>
     </section>
 </div>
+@section scripts{
+    <script type="text/javascript">
+        $(function() {
+            $.getJSON('/api/contact', function(contactsJsonPayload) {
+                $(contactsJsonPayload).each(function(w,item) {
+                    $('#contacts').append('<li>' + item.Name + '</li>');
+                });
+            });
+        });
+    </script>
+    
+<script type="text/javascript">
+    $('#saveContact').click(function () {
+        $.post("api/contact",
+            $("#saveContactForm").serialize(),
+            function (value) {
+                $('#contacts').append('<li>' + value.Name + '</li>');
+            },
+            "json"
+        );
+    });
+</script>
+}
+
