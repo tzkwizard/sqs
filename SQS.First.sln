@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQS.First", "SQS.First\SQS.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamoDB.First", "AwsDynamoDBDataModelSample1\DynamoDB.First.csproj", "{968B2B99-BECB-4BAB-ACBB-671A3688CD42}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{11236EBF-38F4-417C-9E57-FDDFB768FD49}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{CD586A4C-E35F-4640-AB0B-30F720F39AA3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{968B2B99-BECB-4BAB-ACBB-671A3688CD42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{968B2B99-BECB-4BAB-ACBB-671A3688CD42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{968B2B99-BECB-4BAB-ACBB-671A3688CD42}.Release|Any CPU.Build.0 = Release|Any CPU
-		{11236EBF-38F4-417C-9E57-FDDFB768FD49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{11236EBF-38F4-417C-9E57-FDDFB768FD49}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{11236EBF-38F4-417C-9E57-FDDFB768FD49}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{11236EBF-38F4-417C-9E57-FDDFB768FD49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD586A4C-E35F-4640-AB0B-30F720F39AA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD586A4C-E35F-4640-AB0B-30F720F39AA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD586A4C-E35F-4640-AB0B-30F720F39AA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD586A4C-E35F-4640-AB0B-30F720F39AA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

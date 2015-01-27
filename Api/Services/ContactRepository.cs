@@ -34,7 +34,7 @@ namespace Api.Services
                 }
             }
         }
-        public bool SaveContact(Contact contact)
+        public static bool SaveContact(Contact contact)
         {
             var ctx = HttpContext.Current;
 

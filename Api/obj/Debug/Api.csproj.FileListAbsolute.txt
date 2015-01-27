@@ -6,7 +6,6 @@ C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\Api\bin\Ent
 C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\Api\bin\Microsoft.Data.Edm.dll
 C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\Api\bin\Microsoft.Data.OData.dll
 C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\Api\bin\Microsoft.Web.Infrastructure.dll
-C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\Api\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
 C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\Api\bin\Newtonsoft.Json.dll
 C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\Api\bin\System.Net.Http.Formatting.dll
 C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\Api\bin\System.Spatial.dll
@@ -69,3 +68,15 @@ C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\Api\bin\zh-
 C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\Api\obj\Debug\Api.csprojResolveAssemblyReference.cache
 C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\Api\obj\Debug\Api.dll
 C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\Api\obj\Debug\Api.pdb
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\Api\bin\Ninject.dll
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\Api\bin\Ninject.Web.Common.dll
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\Api\bin\Ninject.Web.Mvc.dll
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\Api\bin\WebActivatorEx.dll
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\Api\bin\Ninject.xml
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\Api\bin\Ninject.Web.Common.xml
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\Api\bin\Ninject.Web.Mvc.xml
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\Api\bin\EntityFramework.SqlServer.dll
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\Api\bin\Antlr3.Runtime.pdb
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\Api\bin\EntityFramework.SqlServer.xml
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\Api\bin\System.Web.Optimization.xml
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\Api\bin\System.Web.Providers.xml

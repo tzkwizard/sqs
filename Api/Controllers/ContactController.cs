@@ -7,6 +7,7 @@ using System.Web.Http;
 using Api.Models;
 using Api.Services;
 
+
 namespace Api.Controllers
 {
     public class ContactController : ApiController
@@ -20,6 +21,14 @@ namespace Api.Controllers
         public Contact[] Get()
         {
             return _contactRepository.GetAllContacts(); 
+        }
+        public HttpResponseMessage Post(Contact contact)
+        {
+            ContactRepository.SaveContact(contact);
+
+            var response = Request.CreateResponse<Contact>(System.Net.HttpStatusCode.Created, contact);
+
+            return response;
         }
     }
 }

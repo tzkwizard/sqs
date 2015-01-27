@@ -12,13 +12,13 @@ namespace Api.Controllers
         // GET api/values
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new string[] { "value1", "value2","values3" };
         }
 
         // GET api/values/5
         public object Get(int id)
         {
-            return new {name="value"};
+            return new {name="value",id=id};
         }
 
         // POST api/values
