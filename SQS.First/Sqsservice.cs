@@ -2,10 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using Amazon.DynamoDBv2;
+using Amazon.ECS.Model;
 using Amazon.SQS;
 using Amazon.SQS.Model;
 using SQS.First.DynamoDB;
+using Task = System.Threading.Tasks.Task;
 
 namespace SQS.First
 {
@@ -111,7 +114,7 @@ namespace SQS.First
         }
 
         // Receiving a message
-        public void ReceviveMessage(string endpoint, string queuename)
+        public  DateTime ReceviveMessage(string endpoint, string queuename)
         {
             //var sqs = AWSClientFactory.CreateAmazonSQSClient();
             AmazonSQSConfig amazonSqsConfig = new AmazonSQSConfig { ServiceURL = endpoint };
@@ -131,7 +134,7 @@ namespace SQS.First
             var receiveMessageResponse = sqs.ReceiveMessage(receiveMessageRequest);
             if (receiveMessageResponse.Messages.Count > 0)
             {
-                Console.WriteLine("Printing received message from \n" + endpoint + Program.MyAccountNumber + Program.Queuename);
+               // Console.WriteLine("Printing received message from \n" + endpoint + Program.MyAccountNumber + Program.Queuename);
                 foreach (var message in receiveMessageResponse.Messages)
                 {
 
@@ -162,7 +165,7 @@ namespace SQS.First
                         var client = new AmazonDynamoDBClient(config);
 
 
-                       TableOperations.PutItem(client, s, endpoint,message.MessageId);
+                      TableOperations.PutItem(client, s, endpoint,message.MessageId);
                        // TableOperations.PutItem2(5,client, s, endpoint);
                        s[0]++;
                     }
@@ -199,6 +202,9 @@ namespace SQS.First
             {
                 Console.WriteLine("No messages received.");
             }
+            
+           // Console.WriteLine(DateTime.Now);
+            return DateTime.Now;
         }
 
         //Sending message use multiple thread
@@ -238,7 +244,8 @@ namespace SQS.First
             ThreadState threadstate = new ThreadState("", endpoint, 4, queuename);
             for (int i = 0; i < threadNumber; i++)
             { ThreadPool.QueueUserWorkItem(waitCallback, threadstate); }
-            // Console.ReadLine();
+           // Program.stop.Stop();
+            // Console.WriteLine("gaga");
         }
 
         //Receiving Thread
@@ -251,5 +258,15 @@ namespace SQS.First
             Thread.Sleep(2000);
             //  Console.WriteLine("thread end…… {0}", Thread.CurrentThread.ManagedThreadId); 
         }
+
+        public async Task<DateTime> AsyncProessor(string endpoint,string queuename)
+        {
+            
+           DateTime res=await Task.Run(()=>ReceviveMessage(endpoint,queuename));
+            
+            return res;
+        }
+
+
     }
 }

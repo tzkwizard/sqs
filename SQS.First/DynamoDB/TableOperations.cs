@@ -187,7 +187,7 @@ namespace SQS.First.DynamoDB
       }
             };
             client.PutItem(request);
-            Console.WriteLine("DynamoDB get message "+endpoint+s[0]);
+            //Console.WriteLine("DynamoDB get message "+endpoint+s[0]);
           // s[0]++;
         }
 

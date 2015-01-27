@@ -16,9 +16,11 @@
 using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
+using System.Threading.Tasks;
 using Amazon;
 using Amazon.CloudWatchLogs.Model;
 using Amazon.DirectConnect.Model;
@@ -48,6 +50,7 @@ namespace SQS.First
 
         int[] s = new int[3];
 
+        public static Stopwatch stop = new Stopwatch();
         public static void Main(string[] args)
         {
             //s[0] = 1;
@@ -60,22 +63,35 @@ namespace SQS.First
                 Console.WriteLine("===========================================\n");
 
                 Sqsservice sqs=new Sqsservice();
-                sqs.ListAllQueue(endpoint);
+                //sqs.ListAllQueue(endpoint);
 
+                Console.WriteLine(DateTime.Now);
+                DateTime start = DateTime.Now;
+               //Task<DateTime> task = sqs.AsyncProessor(SqsUSeastEndpoint, Queuename);
+
+               
+
+                for(int i=0;i<100;i++)
+              { sqs.ReceviveMessage(SqsUSeastEndpoint, Queuename);}
+            //    Console.WriteLine(task.ToString()+"gaga");
+                DateTime end = DateTime.Now;
+               Console.WriteLine(end - start);
+              // Console.WriteLine(task.Result - start);
+              
+              //stop.Start();
                 //sqs.SendMessage(SqsUSeastEndpoint, 15, Queuename);
 
-              //sqs.RecevieAllMessage(endpoint,5);
-                
+               // sqs.RecevieAllMessage(endpoint,25);
+
                 // CreateQueue(sqs, queuename);
-               // sqs.SendMessage2(1, SqsUSeastEndpoint, 425, Queuename);
+                // sqs.SendMessage2(1, SqsUSeastEndpoint, 425, Queuename);
 
-              //  sqs.RecevieMessage2(4, SqsUSeastEndpoint, Queuename);
-
-                //Console.WriteLine();
-
-                //sqs.ReceviveMessage(SqsUSeastEndpoint, Queuename);
+               // sqs.RecevieMessage2(25, SqsUSeastEndpoint, Queuename);
+               // sqs.ReceviveMessage(SqsUSeastEndpoint, Queuename);
+              // stop.Stop();
+                //Console.WriteLine(stop.Elapsed);
                 //Test t=new Test();
-              //  t.Testthread();
+                //  t.Testthread();
 
             }
             catch (AmazonSQSException ex)
