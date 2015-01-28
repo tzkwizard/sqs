@@ -49,6 +49,13 @@ namespace WebApi.Controllers
         // POST api/values
         public void Post([FromBody]string value)
         {
+            /*try
+            {
+            }
+            catch(Exception e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest,e);
+            }*/
         }
 
         // PUT api/values/5
