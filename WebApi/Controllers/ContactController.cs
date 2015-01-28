@@ -31,6 +31,8 @@ namespace WebApi.Controllers
 
             var response = Request.CreateResponse<Contact>(System.Net.HttpStatusCode.Created, contact);
 
+
+
             LogActivity.LogofPost(contact,Request);    
             return response;
         }

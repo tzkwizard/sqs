@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using Amazon.DynamoDBv2;
 using Amazon.SQS;
 using Amazon.SQS.Model;
@@ -55,7 +56,17 @@ namespace WebApi
 
 
 
-        public string SendtoQueue(string endpoint, string queuename,ActivityLog mess)
+        public async Task<DateTime> AsyncSendtoQueue(string endpoint, string queuename, ActivityLog mess)
+        {
+
+            DateTime res = await Task.Run(() => SendtoQueue(endpoint,queuename,mess));
+
+            return res;
+        }
+
+
+
+        public DateTime SendtoQueue(string endpoint, string queuename,ActivityLog mess)
         {
 
             AmazonSQSConfig amazonSqsConfig = new AmazonSQSConfig { ServiceURL = endpoint };
@@ -67,7 +78,7 @@ namespace WebApi
 
             };
             sqs.SendMessage(sendMessageRequest);
-            return "sent succeed";
+            return DateTime.Now;
         }
 
         //Sending a message

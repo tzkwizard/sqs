@@ -41,9 +41,9 @@ namespace WebApi.Controllers
                 "first commit");
             
             
-           string res= sqs.SendtoQueue(Program.SqsUSeastEndpoint, "api", mess);
+          // string res= sqs.SendtoQueue(Program.SqsUSeastEndpoint, "api", mess);
            // HttpRequestMessage request = base.Request;
-            return res ; 
+            return "" ; 
         }
 
         // POST api/values

@@ -67,16 +67,21 @@ namespace SQS.First
 
                 Console.WriteLine(DateTime.Now);
                 DateTime start = DateTime.Now;
-               //Task<DateTime> task = sqs.AsyncProessor(SqsUSeastEndpoint, Queuename);
 
-               
+                Task<DateTime> task = sqs.AsyncProessor(SqsUSeastEndpoint, Queuename);
+                for (int i = 0; i < 50; i++)
+                {task = sqs.AsyncProessor(SqsUSeastEndpoint, Queuename);}
+                Console.WriteLine("async");
+                Console.WriteLine(task.Result - start);
 
-                for(int i=0;i<100;i++)
+                start = DateTime.Now;
+                for(int i=0;i<10;i++)
               { sqs.ReceviveMessage(SqsUSeastEndpoint, Queuename);}
             //    Console.WriteLine(task.ToString()+"gaga");
                 DateTime end = DateTime.Now;
+                Console.WriteLine("one thread");
                Console.WriteLine(end - start);
-              // Console.WriteLine(task.Result - start);
+              
               
               //stop.Start();
                 //sqs.SendMessage(SqsUSeastEndpoint, 15, Queuename);
