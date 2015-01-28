@@ -167,7 +167,7 @@ namespace SQS.First.DynamoDB
         {
 
 
-            const string tableName = "testTable";
+            const string tableName = "SQS";
             Random random=new Random();
             DateTime d = DateTime.Now;
             var request = new PutItemRequest
@@ -175,8 +175,8 @@ namespace SQS.First.DynamoDB
                 TableName = tableName,
                 Item = new Dictionary<string, AttributeValue>()
       {
-          { "ID", new AttributeValue { S=body +"--"+endpoint }},
-          { "Title", new AttributeValue { S = "123"}},
+          { "Id", new AttributeValue { S=body +"--"+endpoint }},
+          { "sex", new AttributeValue { S = "123"}},
           { "Time", new AttributeValue { S = d.ToString(CultureInfo.InvariantCulture).ToString() }},
           { "Price", new AttributeValue { N = random.Next(0,100).ToString() }},
           { 

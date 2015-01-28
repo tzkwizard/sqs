@@ -14,9 +14,9 @@ namespace SQS.First
 {
     class Sqsservice
     {
-        volatile int[] s=new int[2];
-        
-      
+        volatile int[] s = new int[2];
+
+
         public void RecevieAllMessage(string[] endpoint, int threadnumber)
         {
             s[0] = 0;
@@ -96,11 +96,10 @@ namespace SQS.First
             AmazonSQSConfig amazonSqsConfig = new AmazonSQSConfig { ServiceURL = endpoint };
             AmazonSQSClient sqs = new AmazonSQSClient(amazonSqsConfig);
 
-
-
             //Confirming the queue exists
             var listQueuesRequest = new ListQueuesRequest();
             var listQueuesResponse = sqs.ListQueues(listQueuesRequest);
+
 
             Console.WriteLine("Printing list of Amazon SQS queues.\n");
             if (listQueuesResponse.QueueUrls != null)
@@ -110,11 +109,40 @@ namespace SQS.First
                     Console.WriteLine("  QueueUrl: {0}", queueUrl);
                 }
             }
-            Console.WriteLine();
+
         }
 
+        public string[] ListQueuename(string endpoint)
+        {
+            AmazonSQSConfig amazonSqsConfig = new AmazonSQSConfig { ServiceURL = endpoint };
+            AmazonSQSClient sqs = new AmazonSQSClient(amazonSqsConfig);
+            int s = endpoint.Length + Program.MyAccountNumber.Length;
+
+            int l = 0;
+            //Confirming the queue exists
+            var listQueuesRequest = new ListQueuesRequest();
+            var listQueuesResponse = sqs.ListQueues(listQueuesRequest);
+            int size = listQueuesResponse.QueueUrls.Count;
+            string[] queueCollection = new string[size];
+            //Console.WriteLine("Printing list of Amazon SQS queues.\n");
+            if (listQueuesResponse.QueueUrls != null)
+            {
+                int i = 0;
+                foreach (String queueUrl in listQueuesResponse.QueueUrls)
+                {
+                    l = queueUrl.Length;
+                    queueCollection[i] = queueUrl.Substring(s, l - s);
+                    i++;
+                }
+            }
+
+            return queueCollection;
+        }
+
+
+
         // Receiving a message
-        public  DateTime ReceviveMessage(string endpoint, string queuename)
+        public DateTime ReceviveMessage(string endpoint, string queuename)
         {
             //var sqs = AWSClientFactory.CreateAmazonSQSClient();
             AmazonSQSConfig amazonSqsConfig = new AmazonSQSConfig { ServiceURL = endpoint };
@@ -134,7 +162,7 @@ namespace SQS.First
             var receiveMessageResponse = sqs.ReceiveMessage(receiveMessageRequest);
             if (receiveMessageResponse.Messages.Count > 0)
             {
-               // Console.WriteLine("Printing received message from \n" + endpoint + Program.MyAccountNumber + Program.Queuename);
+                // Console.WriteLine("Printing received message from \n" + endpoint + Program.MyAccountNumber + Program.Queuename);
                 foreach (var message in receiveMessageResponse.Messages)
                 {
 
@@ -165,15 +193,15 @@ namespace SQS.First
                         var client = new AmazonDynamoDBClient(config);
 
 
-                      TableOperations.PutItem(client, s, endpoint,message.MessageId);
-                       // TableOperations.PutItem2(5,client, s, endpoint);
-                       s[0]++;
+                        TableOperations.PutItem(client, s, endpoint, message.MessageId);
+                        // TableOperations.PutItem2(5,client, s, endpoint);
+                        s[0]++;
                     }
                     else
                     {
                         Console.WriteLine("nothing sent ");
                     }
-                    
+
                     //           
                     //                    foreach (string attributeKey in message.Attributes.Keys)
                     //                    {
@@ -184,17 +212,17 @@ namespace SQS.First
                     //                    }
 
                     // var messageRecieptHandle = receiveMessageResponse.Messages[0].ReceiptHandle;
-//                                        var messageRecieptHandle = message.ReceiptHandle;
-//                    
-//                                        //Deleting a message
-//                                        DateTime t = DateTime.Now;
-//                                        Console.WriteLine("Deleting the message from queue.\n"+t);
-//                                        var deleteRequest = new DeleteMessageRequest
-//                                        {
-//                                           QueueUrl = endpoint +Program.MyAccountNumber+ Program.Queuename,
-//                                            ReceiptHandle = messageRecieptHandle
-//                                        };
-//                                        sqs.DeleteMessage(deleteRequest);
+                    //                                        var messageRecieptHandle = message.ReceiptHandle;
+                    //                    
+                    //                                        //Deleting a message
+                    //                                        DateTime t = DateTime.Now;
+                    //                                        Console.WriteLine("Deleting the message from queue.\n"+t);
+                    //                                        var deleteRequest = new DeleteMessageRequest
+                    //                                        {
+                    //                                           QueueUrl = endpoint +Program.MyAccountNumber+ Program.Queuename,
+                    //                                            ReceiptHandle = messageRecieptHandle
+                    //                                        };
+                    //                                        sqs.DeleteMessage(deleteRequest);
                 }
 
             }
@@ -202,8 +230,74 @@ namespace SQS.First
             {
                 Console.WriteLine("No messages received.");
             }
-            
-           // Console.WriteLine(DateTime.Now);
+
+            // Console.WriteLine(DateTime.Now);
+            return DateTime.Now;
+        }
+
+
+
+
+
+        // Receiving endpoint all message
+        public DateTime ReceviveEndpointAllQueueMessage(string endpoint, string[] queueCollection)
+        {
+            AmazonSQSConfig amazonSqsConfig = new AmazonSQSConfig { ServiceURL = endpoint };
+            AmazonSQSClient sqs = new AmazonSQSClient(amazonSqsConfig);
+            foreach (var queuename in queueCollection)
+            {
+
+                var receiveMessageRequest = new ReceiveMessageRequest
+                {
+                    AttributeNames = new List<string>() { "All" },
+                    MaxNumberOfMessages = 10,
+                    QueueUrl = endpoint + Program.MyAccountNumber + queuename,
+                    VisibilityTimeout = (int)TimeSpan.FromMinutes(2).TotalSeconds,
+                    WaitTimeSeconds = (int)TimeSpan.FromSeconds(5).TotalSeconds
+                };
+
+                // var receiveMessageRequest = new ReceiveMessageRequest { QueueUrl = USwest2Url };
+                var receiveMessageResponse = sqs.ReceiveMessage(receiveMessageRequest);
+                if (receiveMessageResponse.Messages.Count > 0)
+                {
+                    foreach (var message in receiveMessageResponse.Messages)
+                    {
+
+                        if (message.Body.Count() > 5)
+                        {
+                            //Console.WriteLine("Setting up DynamoDB client");                      
+                            AmazonDynamoDBConfig config = new AmazonDynamoDBConfig();
+                            config.ServiceURL = Program.DynamoDbUSwestEndpoint;
+                            var client = new AmazonDynamoDBClient(config);
+                            TableOperations.PutItem(client, s, endpoint, message.MessageId);
+                            // TableOperations.PutItem2(5,client, s, endpoint);
+                            //s[0]++;
+                        }
+                        else
+                        {
+                            Console.WriteLine("nothing sent ");
+                        }
+                        // var messageRecieptHandle = receiveMessageResponse.Messages[0].ReceiptHandle;
+                        var messageRecieptHandle = message.ReceiptHandle;
+                        //Deleting a message
+                        DateTime t = DateTime.Now;
+                        Console.WriteLine("Deleting the message from queue.\n" + t);
+                        var deleteRequest = new DeleteMessageRequest
+                        {
+                            QueueUrl = endpoint + Program.MyAccountNumber + Program.Queuename,
+                            ReceiptHandle = messageRecieptHandle
+                        };
+                        sqs.DeleteMessage(deleteRequest);
+
+                    }
+
+                }
+                else
+                {
+                    Console.WriteLine("No messages received.");
+                }
+                Console.WriteLine(queuename + "is finished");
+            }
             return DateTime.Now;
         }
 
@@ -244,7 +338,7 @@ namespace SQS.First
             ThreadState threadstate = new ThreadState("", endpoint, 4, queuename);
             for (int i = 0; i < threadNumber; i++)
             { ThreadPool.QueueUserWorkItem(waitCallback, threadstate); }
-           // Program.stop.Stop();
+            // Program.stop.Stop();
             // Console.WriteLine("gaga");
         }
 
@@ -259,14 +353,34 @@ namespace SQS.First
             //  Console.WriteLine("thread end…… {0}", Thread.CurrentThread.ManagedThreadId); 
         }
 
-        public async Task<DateTime> AsyncProessor(string endpoint,string queuename)
+        public async Task<DateTime> AsyncProessorForEndpoint(string endpoint, string[] queueanmeCollection)
         {
-            
-           DateTime res=await Task.Run(()=>ReceviveMessage(endpoint,queuename));
-            
+
+            DateTime res = await Task.Run(() => ReceviveEndpointAllQueueMessage(endpoint, queueanmeCollection));
             return res;
         }
 
+
+        public DateTime AsyncSqsProessor(string[] endpointCollection)
+        {
+            DateTime res = new DateTime();
+            foreach (var endpoint in endpointCollection)
+            {
+                string[] queueNameCollection = ListQueuename(endpoint);
+                Task<DateTime> task = AsyncProessorForEndpoint(endpoint, queueNameCollection);
+                for (int i = 0; i < 5; i++)
+                {
+                    queueNameCollection = ListQueuename(endpoint);
+                    task = AsyncProessorForEndpoint(endpoint, queueNameCollection);
+                }
+                res = task.Result;
+                Console.WriteLine("Delay 5s");
+                Thread.Sleep(5000);
+            }
+
+
+            return res;
+        }
 
     }
 }

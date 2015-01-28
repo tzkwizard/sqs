@@ -42,7 +42,9 @@ namespace SQS.First
        public const string SqsUSeastEndpoint = "https://sqs.us-east-1.amazonaws.com";
        public const String SqsUSwestEndpoint = "https://sqs.us-west-1.amazonaws.com";
        public const String DynamoDbUSwest2Endpoint = "http://dynamodb.us-west-2.amazonaws.com";
-         public const string MyAccountNumber = "/192607422200/";
+       public const String DynamoDbUSwestEndpoint = "http://dynamodb.us-west-1.amazonaws.com";
+         public const string MyAccountNumber2 = "/192607422200/";
+         public const string MyAccountNumber = "/606227029357/";
          public const string Queuename = "tzkQueue";
          public const string USwest2Url = SqsUSwest2Endpoint + MyAccountNumber + Queuename;
          public const string USeastUrl = SqsUSeastEndpoint + MyAccountNumber + Queuename;
@@ -55,7 +57,7 @@ namespace SQS.First
         {
             //s[0] = 1;
             
-            string[] endpoint = { SqsUSwestEndpoint, SqsUSwest2Endpoint, SqsUSeastEndpoint };
+            string[] endpointCollection = { SqsUSwestEndpoint, SqsUSwest2Endpoint, SqsUSeastEndpoint };
             try
             {
                 Console.WriteLine("===========================================");
@@ -63,40 +65,60 @@ namespace SQS.First
                 Console.WriteLine("===========================================\n");
 
                 Sqsservice sqs=new Sqsservice();
-                //sqs.ListAllQueue(endpoint);
+               //sqs.ListAllQueue(endpoint);
+               string[] queueNameCollection = sqs.ListQueuename(SqsUSwestEndpoint);
+
+
+                //sqs.ReceviveEndpointMessage(SqsUSwest2Endpoint, queueCollection);
 
                 Console.WriteLine(DateTime.Now);
                 DateTime start = DateTime.Now;
 
-                Task<DateTime> task = sqs.AsyncProessor(SqsUSeastEndpoint, Queuename);
-                for (int i = 0; i < 50; i++)
-                {task = sqs.AsyncProessor(SqsUSeastEndpoint, Queuename);}
-                Console.WriteLine("async");
-                Console.WriteLine(task.Result - start);
+                DateTime end = sqs.AsyncSqsProessor(endpointCollection);
+                Console.WriteLine(end - start);
 
-                start = DateTime.Now;
+
+
+
+
+               /* Task<DateTime> task = sqs.AsyncProessorForEndpoint(SqsUSwestEndpoint, queueNameCollection);
+                for (int i = 0; i < 50; i++)
+                {
+                    queueNameCollection = sqs.ListQueuename(SqsUSwestEndpoint);
+                    task = sqs.AsyncProessorForEndpoint(SqsUSwestEndpoint, queueNameCollection);
+                }
+                Console.WriteLine("async");
+                Console.WriteLine(task.Result - start);*/
+
+                /* start = DateTime.Now;
                 for(int i=0;i<10;i++)
               { sqs.ReceviveMessage(SqsUSeastEndpoint, Queuename);}
             //    Console.WriteLine(task.ToString()+"gaga");
                 DateTime end = DateTime.Now;
                 Console.WriteLine("one thread");
                Console.WriteLine(end - start);
-              
-              
-              //stop.Start();
-                //sqs.SendMessage(SqsUSeastEndpoint, 15, Queuename);
 
-               // sqs.RecevieAllMessage(endpoint,25);
+
+                //stop.Start();
+                // sqs.SendMessage(SqsUSwestEndpoint, 15, Queuename);
+
+                // sqs.RecevieAllMessage(endpoint,25);
 
                 // CreateQueue(sqs, queuename);
-                // sqs.SendMessage2(1, SqsUSeastEndpoint, 425, Queuename);
 
-               // sqs.RecevieMessage2(25, SqsUSeastEndpoint, Queuename);
-               // sqs.ReceviveMessage(SqsUSeastEndpoint, Queuename);
-              // stop.Stop();
+              /*  sqs.SendMessage2(40, SqsUSwestEndpoint, 40, "aoi");
+                sqs.SendMessage2(40, SqsUSwestEndpoint, 40, "api");
+                sqs.SendMessage2(40, SqsUSeastEndpoint, 40, "api");
+                sqs.SendMessage2(40, SqsUSeastEndpoint, 40, "test");
+                sqs.SendMessage2(40, SqsUSwest2Endpoint, 40, "test");
+                sqs.SendMessage2(40, SqsUSwest2Endpoint, 40, "DeadLetterQueue");
+                sqs.SendMessage2(40, SqsUSwest2Endpoint, 40, "RW_LG");*/
+
+                //sqs.RecevieMessage2(25, SqsUSeastEndpoint, Queuename);
+                // sqs.ReceviveMessage(SqsUSeastEndpoint, Queuename);
+                // stop.Stop();
                 //Console.WriteLine(stop.Elapsed);
-                //Test t=new Test();
-                //  t.Testthread();
+                
 
             }
             catch (AmazonSQSException ex)

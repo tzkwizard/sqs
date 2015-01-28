@@ -70,10 +70,11 @@ namespace WebApi
         {
 
             AmazonSQSConfig amazonSqsConfig = new AmazonSQSConfig { ServiceURL = endpoint };
+            
             AmazonSQSClient sqs = new AmazonSQSClient(amazonSqsConfig);
             var sendMessageRequest = new SendMessageRequest
             {
-                QueueUrl = endpoint + Program.MyAccountNumber + queuename,
+                QueueUrl = endpoint + Program.MyAccountNumber2 + queuename,
                 MessageBody = mess.IpAddress+mess.Time+mess.Desciption
 
             };

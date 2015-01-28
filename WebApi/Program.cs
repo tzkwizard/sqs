@@ -28,6 +28,7 @@ namespace WebApi
        public const String SqsUSwestEndpoint = "https://sqs.us-west-1.amazonaws.com";
        public const String DynamoDbUSwest2Endpoint = "http://dynamodb.us-west-2.amazonaws.com";
          public const string MyAccountNumber = "/192607422200/";
+         public const string MyAccountNumber2 = "/606227029357/";
          public const string Queuename = "tzkQueue";
          public const string USwest2Url = SqsUSwest2Endpoint + MyAccountNumber + Queuename;
          public const string USeastUrl = SqsUSeastEndpoint + MyAccountNumber + Queuename;

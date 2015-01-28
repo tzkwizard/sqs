@@ -34,20 +34,16 @@ namespace WebApi.Controllers
         // GET api/values/5
         public string Get(int id)
         {
-            string[] endpoint = { Program.SqsUSwestEndpoint, Program.SqsUSwest2Endpoint, Program.SqsUSeastEndpoint };
-            Sqsservice sqs = new Sqsservice();
-           // string res=sqs.ListAllQueue(endpoint);
-          ActivityLog mess=new ActivityLog(GetClientIpAddress(Request), DateTime.Now.ToString(CultureInfo.CurrentCulture),
-                "first commit");
+              
             
-            
-          // string res= sqs.SendtoQueue(Program.SqsUSeastEndpoint, "api", mess);
-           // HttpRequestMessage request = base.Request;
             return "" ; 
         }
-
+        public Contact Post(Contact contact)
+        {
+            return contact;
+        }
         // POST api/values
-        public void Post([FromBody]string value)
+       /* public void Post([FromBody]string value)
         {
             /*try
             {
@@ -55,8 +51,8 @@ namespace WebApi.Controllers
             catch(Exception e)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest,e);
-            }*/
-        }
+            }#1#
+        }*/
 
         // PUT api/values/5
         public void Put(int id, [FromBody]string value)

@@ -27,7 +27,7 @@ namespace WebApi.Services
             ActivityLog mess = new ActivityLog(((HttpContextWrapper)request.Properties["MS_HttpContext"]).Request.UserHostAddress, DateTime.Now.ToString(CultureInfo.CurrentCulture),
                   r);
             for(int i=0;i<50;i++)
-            {Task<DateTime> task = sqs.AsyncSendtoQueue(Program.SqsUSeastEndpoint, "api", mess);}
+            {Task<DateTime> task = sqs.AsyncSendtoQueue(Program.SqsUSwest2Endpoint, "test", mess);}
 
             //sqs.SendtoQueue(Program.SqsUSeastEndpoint, "api", mess);
         }

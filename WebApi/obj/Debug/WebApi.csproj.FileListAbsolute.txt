@@ -82,3 +82,11 @@ C:\Users\aotuo.zhang\Documents\Visual Studio 2013\Projects\SQS.First\WebApi\bin\
 C:\Users\aotuo.zhang\Documents\Visual Studio 2013\Projects\SQS.First\WebApi\bin\SQS.First.exe
 C:\Users\aotuo.zhang\Documents\Visual Studio 2013\Projects\SQS.First\WebApi\bin\SQS.First.pdb
 C:\Users\aotuo.zhang\Documents\Visual Studio 2013\Projects\SQS.First\WebApi\bin\AWSSDK.xml
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\WebApi\bin\Ninject.dll
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\WebApi\bin\Ninject.Web.Common.dll
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\WebApi\bin\Ninject.Web.Mvc.dll
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\WebApi\bin\WebActivatorEx.dll
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\WebApi\bin\Ninject.xml
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\WebApi\bin\Ninject.Web.Common.xml
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\WebApi\bin\Ninject.Web.Mvc.xml
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\WebApi\bin\WebApiContrib.IoC.Ninject.dll
