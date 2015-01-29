@@ -31,5 +31,27 @@ namespace WebApi.Services
 
             //sqs.SendtoQueue(Program.SqsUSeastEndpoint, "api", mess);
         }
+
+        public static void LogSend(string s,HttpRequestMessage request)
+        {
+            string[] endpoint = { Program.SqsUSwestEndpoint, Program.SqsUSwest2Endpoint, Program.SqsUSeastEndpoint };
+            Sqsservice sqs = new Sqsservice();
+
+            HttpRequestHeaders res = request.Headers;
+            string r = res.Accept + "//" + res.AcceptCharset + "//" + res.Connection + "//" + res.Referrer + "//";
+
+            /*  Task<DateTime> task = sqs.AsyncProessor(SqsUSeastEndpoint, Queuename);
+              for (int i = 0; i < 50; i++)
+              { task = sqs.AsyncProessor(SqsUSeastEndpoint, Queuename); }*/
+
+            ActivityLog mess = new ActivityLog(s, DateTime.Now.ToString(CultureInfo.CurrentCulture),
+                  r);
+            for (int i = 0; i < 1550; i++)
+            { Task<DateTime> task = sqs.AsyncSendtoQueue(Program.SqsUSwest2Endpoint, "api", mess); }
+
+            //sqs.SendtoQueue(Program.SqsUSeastEndpoint, "api", mess);
+        }
+
+
     }
 }

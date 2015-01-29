@@ -31,7 +31,7 @@ namespace WebApi.Controllers
             {
                 if (_modelFactory == null)
                 {
-                    _modelFactory=new ModelFactory(this.Request);
+                    _modelFactory=new ModelFactory(this.Request,TheRepository);
                 }
                 return _modelFactory;
             }

@@ -24,11 +24,24 @@ namespace WebApi.Controllers
         {
             var username = _identityService.CurrentUser;
             var res = TheRepository.GetDiaries(username)
-                .OrderByDescending(f => f.CurrentDate)
+                .OrderByDescending(d => d.CurrentDate)
                 .Take(10)
                 .ToList()
-                .Select(f => TheModelFactory.Create(f));
+                .Select(d => TheModelFactory.Create(d));
             return res;
+        }
+
+        public HttpResponseMessage Get(DateTime diaryid)
+        {
+             var username = _identityService.CurrentUser;
+            var res = TheRepository.GetDiary(username,diaryid);
+            if (res == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+
+
+            return Request.CreateResponse(HttpStatusCode.OK, TheModelFactory.Create(res));
         }
     }
 }

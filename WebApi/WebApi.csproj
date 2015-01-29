@@ -222,6 +222,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\DiariresController.cs" />
+    <Compile Include="Controllers\DiariresEntriesController.cs" />
     <Compile Include="Controllers\FoodsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MeasuresController.cs" />
@@ -235,6 +236,7 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ActivityLog.cs" />
     <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\DiaryEntryModel.cs" />
     <Compile Include="Models\DiaryModel.cs" />
     <Compile Include="Models\FoodModel.cs" />
     <Compile Include="Models\MeasureModel.cs" />

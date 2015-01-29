@@ -9,7 +9,7 @@ namespace WebApi.Services
     {
         public string CurrentUser
         {
-            get { return "aotuo"; }
+            get { return "shawnwildermuth"; }
         }
     }
 }
