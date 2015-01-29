@@ -284,11 +284,10 @@ namespace SQS.First
                         Console.WriteLine("Deleting the message from queue.\n" + t);
                         var deleteRequest = new DeleteMessageRequest
                         {
-                            QueueUrl = endpoint + Program.MyAccountNumber + Program.Queuename,
+                            QueueUrl = endpoint + Program.MyAccountNumber + queuename,
                             ReceiptHandle = messageRecieptHandle
                         };
                         sqs.DeleteMessage(deleteRequest);
-
                     }
 
                 }
@@ -368,7 +367,7 @@ namespace SQS.First
             {
                 string[] queueNameCollection = ListQueuename(endpoint);
                 Task<DateTime> task = AsyncProessorForEndpoint(endpoint, queueNameCollection);
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < 3; i++)
                 {
                     queueNameCollection = ListQueuename(endpoint);
                     task = AsyncProessorForEndpoint(endpoint, queueNameCollection);

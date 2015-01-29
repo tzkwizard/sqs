@@ -25,6 +25,16 @@ namespace WebApi
                 defaults: new { controller = "Measures", id = RouteParameter.Optional }
                 //constraints:new{id="/d+"}
             );
+            config.Routes.MapHttpRoute(
+                name: "Diarires",
+                routeTemplate: "api/users/diarires/{diaryid}",
+                defaults: new { controller = "Diarires", diaryid = RouteParameter.Optional }
+                //constraints:new{id="/d+"}
+            );
+
+
+
+
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

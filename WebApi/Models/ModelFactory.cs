@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Security.Policy;
 using System.Web;
 using System.Web.Http.Routing;
 using WebApi.App_Data.Entities;
@@ -24,6 +25,16 @@ namespace WebApi.Models
                 Url = _urlHelper.Link("Food",new{foodid=food.Id}),
                 Description = food.Description,
                 Measures = food.Measures.Select(m => Create(m))
+            };
+        }
+
+
+        public DiaryModel Create(Diary diary)
+        {
+            return new DiaryModel()
+            {
+                Url = _urlHelper.Link("Diaries", new { diaryid = diary.CurrentDate }),
+                CurrentDate = diary.CurrentDate
             };
         }
 
