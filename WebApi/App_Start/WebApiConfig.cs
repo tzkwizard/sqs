@@ -15,8 +15,8 @@ namespace WebApi
     {
         public static void Register(HttpConfiguration config)
         {
-
-           // config.MapHttpAttributeRoutes();
+            //attribute routing
+            config.MapHttpAttributeRoutes();
 
 
             config.Routes.MapHttpRoute(
