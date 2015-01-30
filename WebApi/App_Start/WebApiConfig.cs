@@ -5,7 +5,9 @@ using System.Linq;
 using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Web.Http;
+using System.Web.Http.Dispatcher;
 using Microsoft.Ajax.Utilities;
+using WebApi.Services;
 
 namespace WebApi
 {
@@ -13,6 +15,10 @@ namespace WebApi
     {
         public static void Register(HttpConfiguration config)
         {
+
+           // config.MapHttpAttributeRoutes();
+
+
             config.Routes.MapHttpRoute(
                 name: "Food",
                 routeTemplate: "api/nutrition/foods/{foodid}",
@@ -25,6 +31,12 @@ namespace WebApi
                 defaults: new { controller = "Measures", id = RouteParameter.Optional }
                 //constraints:new{id="/d+"}
             );
+//            config.Routes.MapHttpRoute(
+//                name: "Measures2",
+//                routeTemplate: "api/nutrition/foods/{foodid}/measures/{id}",
+//                defaults: new { controller = "MeasuresV2", id = RouteParameter.Optional }
+//                //constraints:new{id="/d+"}
+//            );
             config.Routes.MapHttpRoute(
                 name: "Diarires",
                 routeTemplate: "api/users/diarires/{diaryid}",
@@ -42,11 +54,11 @@ namespace WebApi
 
 
 
-            config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
+//            config.Routes.MapHttpRoute(
+//                name: "DefaultApi",
+//                routeTemplate: "api/{controller}/{id}",
+//                defaults: new { id = RouteParameter.Optional }
+//            );
 //            var appXmlType = config.Formatters.XmlFormatter.SupportedMediaTypes.FirstOrDefault(t => t.MediaType == "application/xml");
 //            config.Formatters.XmlFormatter.SupportedMediaTypes.Remove(appXmlType);
             
@@ -60,6 +72,11 @@ namespace WebApi
             // To disable tracing in your application, please comment out or remove the following line of code
             // For more information, refer to: http://www.asp.net/web-api
             config.EnableSystemDiagnosticsTracing();
+
+
+
+            //replace the contoller configuration 
+           // config.Services.Replace(typeof(IHttpControllerSelector),new WebApiControllerSelector(config));
         }
     }
 }

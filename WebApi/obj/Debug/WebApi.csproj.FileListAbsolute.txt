@@ -90,3 +90,8 @@ C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\WebApi\bin\
 C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\WebApi\bin\Ninject.Web.Common.xml
 C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\WebApi\bin\Ninject.Web.Mvc.xml
 C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\WebApi\bin\WebApiContrib.IoC.Ninject.dll
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\WebApi\bin\Microsoft.Web.Helpers.dll
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\WebApi\bin\WebMatrix.Data.dll
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\WebApi\bin\WebMatrix.WebData.dll
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\WebApi\bin\WebMatrix.Data.xml
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\WebApi\bin\WebMatrix.WebData.xml

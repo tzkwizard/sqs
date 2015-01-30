@@ -62,6 +62,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.Data.OData.5.6.3\lib\net40\Microsoft.Data.OData.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.WebHelpers.3.2.2\lib\net45\Microsoft.Web.Helpers.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -171,6 +174,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
     </Reference>
+    <Reference Include="WebMatrix.Data, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.3.2.2\lib\net45\WebMatrix.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.3.2.2\lib\net45\WebMatrix.WebData.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Data\CountingKsContext.cs" />
@@ -225,7 +236,9 @@
     <Compile Include="Controllers\DiariresEntriesController.cs" />
     <Compile Include="Controllers\FoodsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MeasuresV2Controller.cs" />
     <Compile Include="Controllers\MeasuresController.cs" />
+    <Compile Include="Controllers\StatsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DynamoDB\DataModelSample.cs" />
     <Compile Include="DynamoDB\DataModelSchema.cs" />
@@ -239,6 +252,7 @@
     <Compile Include="Models\DiaryEntryModel.cs" />
     <Compile Include="Models\DiaryModel.cs" />
     <Compile Include="Models\FoodModel.cs" />
+    <Compile Include="Models\MeasureV2Model.cs" />
     <Compile Include="Models\MeasureModel.cs" />
     <Compile Include="Models\ModelFactory.cs" />
     <Compile Include="Program.cs" />
@@ -247,6 +261,7 @@
     <Compile Include="Services\CountingKsIdentityService.cs" />
     <Compile Include="Services\ICountingKsIdentityService.cs" />
     <Compile Include="Services\LogActivity.cs" />
+    <Compile Include="Services\WebApiControllerSelector.cs" />
     <Compile Include="Sqsservice.cs" />
   </ItemGroup>
   <ItemGroup>
