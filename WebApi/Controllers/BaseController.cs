@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using WebApi.ActionResults;
 using WebApi.App_Data;
 using WebApi.Models;
 
@@ -35,6 +36,11 @@ namespace WebApi.Controllers
                 }
                 return _modelFactory;
             }
+        }
+
+        protected IHttpActionResult Versioned<T>(T body, string version = "v1") where T :class
+        {
+            return new VersionedActionResults<T>(Request, version, body);
         }
     }
 }

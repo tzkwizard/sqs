@@ -17,6 +17,8 @@ namespace WebApi.Controllers
         {
             
         }
+
+        
         public IEnumerable<FoodModel> Get(bool includeMeasures=true)
         {
             IQueryable<Food> query;
@@ -33,9 +35,11 @@ namespace WebApi.Controllers
             return res;
         }
 
-        public FoodModel Get(int foodid)
+        /*[Route("api/nutrition/foods/{foodid}", Name = "Food")]
+        [HttpGet]*/
+        public IHttpActionResult Get(int foodid)
         {
-            return TheModelFactory.Create(TheRepository.GetFood(foodid));
+            return Versioned(TheModelFactory.Create(TheRepository.GetFood(foodid)),"v2");
         }
        
     }

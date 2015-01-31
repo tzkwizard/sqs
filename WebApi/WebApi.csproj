@@ -184,6 +184,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionResults\VersionedActionResults.cs" />
     <Compile Include="App_Data\CountingKsContext.cs" />
     <Compile Include="App_Data\CountingKsMapping.cs" />
     <Compile Include="App_Data\CountingKsMigrationConfiguration.cs" />

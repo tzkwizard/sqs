@@ -76,7 +76,7 @@ namespace WebApi
 
 
             //replace the contoller configuration 
-           // config.Services.Replace(typeof(IHttpControllerSelector),new WebApiControllerSelector(config));
+            config.Services.Replace(typeof(IHttpControllerSelector),new WebApiControllerSelector(config));
         }
     }
 }

@@ -8,6 +8,8 @@ using WebApi.App_Data;
 
 namespace WebApi.Controllers
 {
+
+    [RoutePrefix("api/stats")]
     public class StatsController : BaseApiController
     {
         public StatsController(ICountingKsRepository repo) : base(repo)
@@ -15,16 +17,33 @@ namespace WebApi.Controllers
             
         }
 
-        [Route("api/Stats/123")]
+        [Route("")]
         [HttpGet]
-        public HttpResponseMessage Get()
+        public IHttpActionResult Get()
         {
             var result = new
             {
                 NumFoods=TheRepository.GetAllFoods().Count(),
                 NumUsers=TheRepository.GetApiUsers().Count()
             };
-            return Request.CreateResponse(result);
+            return Ok(result);
         }
+
+        [Route("~/api/Stat/{id:int}")]
+        [HttpGet]
+        public IHttpActionResult Get(int id)
+        {
+            if (id%2 == 0)
+            {
+                return Ok(new {NumFoods = TheRepository.GetAllFoods().Count()});
+            }
+            else
+            {
+               return NotFound();
+            }
+        }
+
+
+
     }
 }
