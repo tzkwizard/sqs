@@ -1,0 +1,15 @@
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\SQS.First\bin\Release\SQS.First.exe.config
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\SQS.First\bin\Release\SQS.First.exe
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\SQS.First\bin\Release\SQS.First.pdb
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\SQS.First\bin\Release\AWSSDK.dll
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\SQS.First\bin\Release\Newtonsoft.Json.dll
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\SQS.First\bin\Release\System.Net.Http.Formatting.dll
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\SQS.First\bin\Release\System.Web.Http.dll
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\SQS.First\bin\Release\System.Web.Http.WebHost.dll
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\SQS.First\bin\Release\AWSSDK.xml
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\SQS.First\bin\Release\Newtonsoft.Json.xml
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\SQS.First\bin\Release\System.Net.Http.Formatting.xml
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\SQS.First\bin\Release\System.Web.Http.xml
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\SQS.First\bin\Release\System.Web.Http.WebHost.xml
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\SQS.First\obj\Release\SQS.First.exe
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\SQS.First\obj\Release\SQS.First.pdb

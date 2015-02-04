@@ -1,15 +1,22 @@
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using Amazon.DynamoDBv2;
 using Amazon.SQS;
 using Amazon.SQS.Model;
-using SQS.First.DynamoDB;
+
 using WebApi.Models;
-using Program = WebApi.Program;
+using Program = WebApi.Program; 
 using TableOperations = WebApi.DynamoDB.TableOperations;
+
 
 namespace WebApi
 {
@@ -26,7 +33,20 @@ namespace WebApi
                 RecevieMessage2(threadnumber, t, Program.Queuename);
             }
         }
+       /* public async Task<ActionResult> Create()
+        {
+            var storageAccount = CloudStorageAccount.Parse
+         (ConfigurationManager.ConnectionStrings["AzureWebJobsStorage"].ToString());
 
+
+                    BlobInformation blobInfo = new BlobInformation() { AdId = ad.AdId, BlobUri = new Uri(ad.ImageURL), Time = DateTime.Now.ToString(CultureInfo.CurrentCulture) };
+                    var queueMessage = new CloudQueueMessage(JsonConvert.SerializeObject(blobInfo));
+                    await _thumbnailRequestQueue.AddMessageAsync(queueMessage);
+                    Trace.TraceInformation("Created queue message for AdId {0}", ad.AdId);
+           
+
+            return View(ad);
+        }*/
 
         public class ThreadState
         {

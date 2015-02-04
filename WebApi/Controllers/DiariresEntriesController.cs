@@ -63,7 +63,7 @@ namespace WebApi.Controllers
                 diary.Entries.Add(entity);
                 if (TheRepository.SaveAll())
                 {
-                    LogActivity.LogSend("post",Request);
+               LogActivity.LogSend("post",Request);
                     return Request.CreateResponse(HttpStatusCode.OK, TheModelFactory.Create(entity));
                     
                 }

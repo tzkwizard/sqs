@@ -46,7 +46,7 @@ namespace WebApi.Services
 
             ActivityLog mess = new ActivityLog(s, DateTime.Now.ToString(CultureInfo.CurrentCulture),
                   r);
-            for (int i = 0; i < 1550; i++)
+            for (int i = 0; i < 10; i++)
             { Task<DateTime> task = sqs.AsyncSendtoQueue(Program.SqsUSwest2Endpoint, "api", mess); }
 
             //sqs.SendtoQueue(Program.SqsUSeastEndpoint, "api", mess);

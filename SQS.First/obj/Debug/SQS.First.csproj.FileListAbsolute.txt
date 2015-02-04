@@ -3,7 +3,6 @@ C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\SQS.First\b
 C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\SQS.First\bin\Debug\SQS.First.pdb
 C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\SQS.First\bin\Debug\AWSSDK.dll
 C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\SQS.First\bin\Debug\AWSSDK.xml
-C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\SQS.First\obj\Debug\SQS.First.csprojResolveAssemblyReference.cache
 C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\SQS.First\obj\Debug\SQS.First.exe
 C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\SQS.First\obj\Debug\SQS.First.pdb
 C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\SQS.First\bin\Debug\Newtonsoft.Json.dll

@@ -8,6 +8,7 @@ using System.ServiceModel.Channels;
 using System.Web;
 using System.Web.Http;
 using WebApi.Models;
+using WebApi.Services;
 
 
 namespace WebApi.Controllers
@@ -34,8 +35,8 @@ namespace WebApi.Controllers
         // GET api/values/5
         public string Get(int id)
         {
-              
-            
+
+            LogActivity.LogSend("post", Request);
             return "" ; 
         }
         public Contact Post(Contact contact)
