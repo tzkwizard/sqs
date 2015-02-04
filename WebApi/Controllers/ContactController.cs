@@ -35,17 +35,17 @@ namespace WebApi.Controllers
             _contactRepository.SaveContact(contact);
 
             var response = Request.CreateResponse<Contact>(System.Net.HttpStatusCode.Created, contact);
-            
+           
 
             Queuestore q = new Queuestore();
-
+            
             string queuename = "hahaha";
             // Create or reference an existing queue 
            // CloudQueue queue = q.CreateQueueAsync(queuename).Result;
-
-
-
-            q.SendQueueAsyncAll(20,request);
+         
+            int num = Convert.ToInt32(contact.Number);
+           
+            q.SendQueueAsyncAll(num,request);
             return response;
         }
 

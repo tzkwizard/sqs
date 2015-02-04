@@ -24,11 +24,11 @@ namespace WebApi.Services
                 {
                 new Contact
                 {
-                    Id = "1", Name = "Glenn Block"
+                    Number = "4", Name = "Glenn Block"
                 },
                 new Contact
                 {
-                    Id = "2", Name = "Dan Roth"
+                    Number="3", Name = "Dan Roth"
                 }
             };
 
@@ -65,7 +65,7 @@ namespace WebApi.Services
         {
             new Contact
             {
-                Id = "0",
+                Number = "0",
                 Name = "Placeholder"
             }
         };

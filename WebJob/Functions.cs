@@ -16,8 +16,6 @@ namespace WebJob
         public static void ProcessQueueMessage([QueueTrigger("qqwwss")] string message, TextWriter log)
         {
             log.WriteLine(message);
-            Console.WriteLine("Azure Storage Queue Sample\n");
-
             Queuestore q = new Queuestore();
             // Create or reference an existing queue 
             //  CloudQueue queue = q.CreateQueueAsync(queuename).Result;

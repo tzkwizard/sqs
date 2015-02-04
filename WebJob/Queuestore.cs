@@ -17,86 +17,6 @@ namespace DataStorageQueue
         /// Create a queue for the sample application to process messages in. 
         /// </summary>
         /// <returns>A CloudQueue object</returns>
-        public async Task<CloudQueue> CreateQueueAsync(string queuename)
-        {
-            // Retrieve storage account information from connection string.
-            CloudStorageAccount storageAccount = CreateStorageAccountFromConnectionString(CloudConfigurationManager.GetSetting("StorageConnectionString"));    
-            // Create a queue client for interacting with the queue service
-            CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
-            Console.WriteLine("Create a queue for the demo  "+queuename);
-            CloudQueue queue = queueClient.GetQueueReference(queuename);
-            try
-            {
-                await queue.CreateIfNotExistsAsync();
-            }
-            catch (StorageException)
-            {
-                Console.WriteLine("If you are running with the default configuration please make sure you have started the storage emulator. Press the Windows key and type Azure Storage to select and run it from the list of applications - then restart the sample.");
-                Console.ReadLine();
-                throw ;
-            }
-
-            return queue;
-        }
-
-        public CloudStorageAccount CreateStorageAccountFromConnectionString(string storageConnectionString)
-        {
-            CloudStorageAccount storageAccount;
-            try
-            {
-                storageAccount = CloudStorageAccount.Parse(storageConnectionString);
-            }
-            catch (FormatException)
-            {
-                Console.WriteLine("Invalid storage account information provided. Please confirm the AccountName and AccountKey are valid in the app.config file - then restart the sample.");
-                Console.ReadLine();
-                throw;
-            }
-            catch (ArgumentException)
-            {
-                Console.WriteLine("Invalid storage account information provided. Please confirm the AccountName and AccountKey are valid in the app.config file - then restart the sample.");
-                Console.ReadLine();
-                throw;
-            }
-
-            return storageAccount;
-        }
-
-        // List
-        public void Listqueue()
-        {
-            CloudStorageAccount storageAccount = CreateStorageAccountFromConnectionString(CloudConfigurationManager.GetSetting("StorageConnectionString"));
-            CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
-            Console.WriteLine("Create a list for queue ");
-
-       
-            foreach (var queue in queueClient.ListQueues())
-            {
-                Console.WriteLine(queue.Uri+"======"+queue.Name);
-            }
-            
-        }
-
-        //Send message
-        public void SendQueueAsyncAll(int num)
-        {
-            Task task = SendQueueAsync(4);
-            for (int i = 0; i < num; i++)
-            {
-                task = SendQueueAsync(i);
-            }
-        }
-
-        public async Task SendQueueAsync(int i)
-        {     
-               CloudStorageAccount storageAccount = CreateStorageAccountFromConnectionString(CloudConfigurationManager.GetSetting("StorageConnectionString"));
-            CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
-
-               CloudQueue queue=queueClient.GetQueueReference("qqwwss");
-                await queue.AddMessageAsync(new CloudQueueMessage("Hello World!"+i));
-                Console.WriteLine("message send"+i);
-        }
-
 
         //get and delete message
         public void ProcessMessageAsyncAll(string queuename)
@@ -115,15 +35,12 @@ namespace DataStorageQueue
             CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
 
             CloudQueue queue = queueClient.GetQueueReference("qqwwss");
-
-           
-
             foreach (CloudQueueMessage message in queue.GetMessages(30 , TimeSpan.FromMinutes(5), null, null))
             {
                 // Process all messages in less than 5 minutes, deleting each message after processing.
                await queue.DeleteMessageAsync(message);
                Random r=new Random();
-               Console.WriteLine("message delete"+r.Next(0,1000));
+               Console.WriteLine("message delete --"+message.AsString+"///"+r.Next(0,1000));
             }
         }
 
@@ -213,24 +130,6 @@ namespace DataStorageQueue
                 // Process all messages in less than 5 minutes, deleting each message after processing.
                 await queue.DeleteMessageAsync(msg);
             }
-        }
-
-        /// <summary>
-        /// Validate the connection string information in app.config and throws an exception if it looks like 
-        /// the user hasn't updated this to valid values. 
-        /// </summary>
-        /// <param name="storageConnectionString">The storage connection string</param>
-        /// <returns>CloudStorageAccount object</returns>
-       
-
-        /// <summary>
-        /// Delete the queue that was created for this sample
-        /// </summary>
-        /// <param name="queue">The sample queue to delete</param>
-        public async Task DeleteQueueAsync(CloudQueue queue)
-        {
-            Console.WriteLine("Delete the queue  "+queue.Name);
-            await queue.DeleteAsync();
         }
     }
 }
