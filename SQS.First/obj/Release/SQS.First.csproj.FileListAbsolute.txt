@@ -13,3 +13,4 @@ C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\SQS.First\b
 C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\SQS.First\bin\Release\System.Web.Http.WebHost.xml
 C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\SQS.First\obj\Release\SQS.First.exe
 C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\SQS.First\obj\Release\SQS.First.pdb
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\SQS.First\obj\Release\SQS.First.csprojResolveAssemblyReference.cache

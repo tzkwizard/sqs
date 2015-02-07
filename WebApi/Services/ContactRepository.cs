@@ -24,12 +24,9 @@ namespace WebApi.Services
                 {
                 new Contact
                 {
-                    Number = "4", Name = "Glenn Block"
-                },
-                new Contact
-                {
-                    Number="3", Name = "Dan Roth"
+                    Number = "1", Name = "aotuo zhang"
                 }
+               
             };
 
                     ctx.Cache[CacheKey] = contacts;

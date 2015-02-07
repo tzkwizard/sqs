@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-  <parameter name="IIS Web Application Name" description="" value="sqs" tags="IisApp">
+  <parameter name="IIS Web Application Name" description="" value="azurewb" tags="IisApp">
     <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\aotuo\.zhang\\documents\\visual\ studio\ 2013\\Projects\\SQS\.First\\WebApi\\obj\\Release\\Package\\PackageTmp$" />
     <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\aotuo\.zhang\\documents\\visual\ studio\ 2013\\Projects\\SQS\.First\\WebApi\\obj\\Release\\Package\\PackageTmp$" />
   </parameter>
-  <parameter name="Add write permission to App_Data Folder" description="Add write permission to App_Data folder" value="sqs/App_Data" tags="Hidden">
+  <parameter name="Add write permission to App_Data Folder" description="Add write permission to App_Data folder" value="azurewb/App_Data" tags="Hidden">
     <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\aotuo\.zhang\\documents\\visual\ studio\ 2013\\Projects\\SQS\.First\\WebApi\\obj\\Release\\Package\\PackageTmp\\App_Data$" />
+  </parameter>
+  <parameter name="AzureWebJobsStorage-Web.config Connection String" description="" value="DefaultEndpointsProtocol=https;AccountName=aatuo;AccountKey=azYJDqDYURQxobU/ykzJY/NMwLiJQc7i+Z/TeJL0HIGLLYJJnlAnRWe49JizHt0kSQpQFHVlIl+gNi8xQg2DDA==" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\aotuo\.zhang\\documents\\visual\ studio\ 2013\\Projects\\SQS\.First\\WebApi\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='AzureWebJobsStorage']/@connectionString" />
   </parameter>
   <parameter name="DefaultConnection-Web.config Connection String" description="" value="Data Source=(LocalDb)\v11.0;Initial Catalog=aspnet-WebApi-20150126151813;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\aspnet-WebApi-20150126151813.mdf" tags="">
     <parameterEntry kind="XmlFile" scope="C:\\Users\\aotuo\.zhang\\documents\\visual\ studio\ 2013\\Projects\\SQS\.First\\WebApi\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
-  </parameter>
-  <parameter name="AzureWebJobsStorage-Web.config Connection String" description="AzureWebJobsStorage Connection String used in web.config by the application to access the database." value="DefaultEndpointsProtocol=https;AccountName=aatuo;AccountKey=azYJDqDYURQxobU/ykzJY/NMwLiJQc7i+Z/TeJL0HIGLLYJJnlAnRWe49JizHt0kSQpQFHVlIl+gNi8xQg2DDA==" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\aotuo\.zhang\\documents\\visual\ studio\ 2013\\Projects\\SQS\.First\\WebApi\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='AzureWebJobsStorage']/@connectionString" />
   </parameter>
 </parameters>

@@ -5,15 +5,16 @@ using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Runtime.Remoting.Contexts;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
-using DataStorageQueue;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Queue;
 using WebApi.Models;
 using WebApi.Services;
+using Context = Microsoft.Ajax.Utilities.Context;
 
 namespace WebApi.Controllers
 {
@@ -30,16 +31,17 @@ namespace WebApi.Controllers
             return _contactRepository.GetAllContacts();
         }
 
-        public HttpResponseMessage Post(Contact contact, HttpRequestMessage request)
+        public HttpResponseMessage Post(Contact contact, HttpRequestMessage requestMessage)
         {
             _contactRepository.SaveContact(contact);
 
-            var response = Request.CreateResponse<Contact>(System.Net.HttpStatusCode.Created, contact);
-           
+            var response = requestMessage.CreateResponse<Contact>(System.Net.HttpStatusCode.Created, contact);
+            
+            HttpRequest request = null;
 
             Queuestore q = new Queuestore();
             
-            string queuename = "hahaha";
+            //string queuename = "hahaha";
             // Create or reference an existing queue 
            // CloudQueue queue = q.CreateQueueAsync(queuename).Result;
          

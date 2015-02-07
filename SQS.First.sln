@@ -13,6 +13,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStorageQueue", "DataSto
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebJob", "WebJob\WebJob.csproj", "{37D42001-C6F1-4628-A3E7-575E36746E82}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElasticSearch", "ElasticSearch\ElasticSearch.csproj", "{8192A5BA-0BD9-4AD4-BC95-AE90026DCDE2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{18CFC1AB-0426-47FF-81D4-73B82BFA3410}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +48,10 @@ Global
 		{37D42001-C6F1-4628-A3E7-575E36746E82}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37D42001-C6F1-4628-A3E7-575E36746E82}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37D42001-C6F1-4628-A3E7-575E36746E82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8192A5BA-0BD9-4AD4-BC95-AE90026DCDE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8192A5BA-0BD9-4AD4-BC95-AE90026DCDE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8192A5BA-0BD9-4AD4-BC95-AE90026DCDE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8192A5BA-0BD9-4AD4-BC95-AE90026DCDE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

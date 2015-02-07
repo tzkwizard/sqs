@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Configuration;
-using System.Globalization;
-using System.Linq;
+using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Sockets;
-using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using Microsoft.WindowsAzure;
@@ -15,7 +13,7 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Queue;
 using Ninject.Activation;
 
-namespace DataStorageQueue
+namespace WebApi
 {
     class Queuestore
     {
@@ -85,39 +83,48 @@ namespace DataStorageQueue
         }
 
         //Send message
-        public void SendQueueAsyncAll(int num, HttpRequestMessage request)
+        public void SendQueueAsyncAll(int num, HttpRequest request)
         {
-            HttpContext context = HttpContext.Current;
+               HttpContext context = HttpContext.Current;
             string ipAddress = context.Request.UserHostAddress;
-            
+            /*IPAddress[] addresslist = Dns.GetHostAddresses(request.Headers.Host);
+             string ad="";
+             foreach (IPAddress ip in addresslist)
+             {
+                 if (ip.AddressFamily == AddressFamily.InterNetwork)
+                 {
+                     ad  += ip.ToString();
+                 }
+             }*/
+
+
             //Task task = SendQueueAsync(4,request);
             for (var i = 0; i < num; i++)
             {
                 //task = SendQueueAsync(i,request);
 
                 var i1 = i;
-                Task.Run(() => SendQueueAsync(i1, request,ipAddress));
+              Task.Run(() => SendQueueAsync(i1,request,ipAddress));
             }
         }
 
-        public async Task SendQueueAsync(int i, HttpRequestMessage request,string r)
+        public async Task SendQueueAsync(int i, HttpRequest request, string r)
         {
             var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.ConnectionStrings["AzureWebJobsStorage"].ToString());
             // Create a queue client for interacting with the queue service
             CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
-            HttpRequestHeaders res = request.Headers;
+           // HttpRequestHeaders res = request.Headers;
           //  System.Web.HttpContext context = System.Web.HttpContext.Current;
           //  string ipAddress = context.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
-            IPAddress[] addresslist = Dns.GetHostAddresses(res.Host);
-            string ad="";
-            foreach (IPAddress ip in addresslist)
+            
+            String message = "haha";
+            if (request != null)
             {
-                if (ip.AddressFamily == AddressFamily.InterNetwork)
-                {
-                    ad  += ip.ToString();
-                }
+                
+                message += request.Headers + "~~~";
+                //+ request.UserHostAddress + "~~~" + request.RawUrl + "~~~" + request.RequestContext + "~~~" + request.ServerVariables + "~~~" + request.GetBufferedInputStream() + "~~~" + request.RequestType + "~~~" + r;
+                
             }
-            String message = ad + "##" + request.RequestUri.AbsoluteUri + "##" + r;
                CloudQueue queue=queueClient.GetQueueReference("qqwwss");
                 await queue.AddMessageAsync(new CloudQueueMessage(message+"*****"+i));
                 Console.WriteLine("message send"+i);

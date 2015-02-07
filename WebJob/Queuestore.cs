@@ -1,47 +1,108 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Text;
+using System.Globalization;
 using System.Threading.Tasks;
-using Microsoft.WindowsAzure;
+using Elasticsearch.Net.ConnectionPool;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Queue;
+using Nest;
 
-namespace DataStorageQueue
+namespace WebJob
 {
     class Queuestore
     {
+        public static Uri Node;
+        public static ConnectionSettings Settings;
+        public static ElasticClient Client;
 
+        public void CreateIndex(string name)
+        {
+
+
+            var indexsettings = new IndexSettings();
+            indexsettings.NumberOfReplicas = 1;
+            indexsettings.NumberOfShards = 1;
+            Client.CreateIndex(c => c
+                .Index(name)
+                .InitializeUsing(indexsettings)
+                .AddMapping<ActivityLog>(m => m.MapFromAttributes()));
+        }
+
+        public  void InsertData(string message)
+        {
+           // Node = new Uri("http://avm1:9200/");
+            Node = new Uri("http://localhost:9200/");
+            var connectionPool = new SniffingConnectionPool(new[] { Node });
+            Settings = new ConnectionSettings(Node, defaultIndex: "azure");
+            Client = new ElasticClient(Settings);
+            string date = DateTime.Now.ToString(CultureInfo.CurrentCulture);
+            var newPost = new ActivityLog(message, date, "");
+
+           Client.Index(newPost);
+            //Console.WriteLine("message delete and forward");
+           //queue.DeleteMessage(message);
+        }
         /// <summary>
         /// Create a queue for the sample application to process messages in. 
         /// </summary>
         /// <returns>A CloudQueue object</returns>
 
         //get and delete message
-        public void ProcessMessageAsyncAll(string queuename)
+//        public async Task ProcessMessageAsyncAll(string queuename)
+//        {
+//            await Task.Run(() => ProcessMessageAsync(queuename));
+//            
+//        }
+
+        public async Task ProcessAsync(string queuename)
         {
-            Task task = ProcessMessageAsync(queuename);
-            for (int i = 0; i <10; i++)
-            {
-                task = ProcessMessageAsync(queuename);
-            }
+             await Task.Run(() => ProcessMessage(queuename));
+
+             
         }
 
-        public async Task ProcessMessageAsync(string queuename)
+
+        public void ProcessMessage(string queuename)
         {
+
             var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.ConnectionStrings["AzureWebJobsStorage"].ToString());
             // Create a queue client for interacting with the queue service
             CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
 
             CloudQueue queue = queueClient.GetQueueReference("qqwwss");
-            foreach (CloudQueueMessage message in queue.GetMessages(30 , TimeSpan.FromMinutes(5), null, null))
+           // Console.WriteLine("1");
+           //CloudQueueMessage message = queue.PeekMessage();
+            int j = 1;
+            j++;
+            Console.WriteLine(j);
+            CloudQueueMessage message = queue.GetMessage();
+            queue.DeleteMessage(message);
+         
+            InsertData(message.AsString);
+        }
+
+        public void ProcessMessageAsync(CloudQueue queue)
+        {
+            
+            int i = 1;
+            int j = 1;
+            j++;
+            foreach (CloudQueueMessage message in queue.GetMessages(20 , TimeSpan.FromSeconds(30), null, null))
             {
                 // Process all messages in less than 5 minutes, deleting each message after processing.
-               await queue.DeleteMessageAsync(message);
-               Random r=new Random();
-               Console.WriteLine("message delete --"+message.AsString+"///"+r.Next(0,1000));
+                
+                Console.WriteLine("message delete and forward --" + "///" + i);
+                
+                //var message1 = message;
+                string m = message.AsString;
+                Console.WriteLine("message  --"+m + "///" + i);
+               // await Task.Run(() => InsertData("",queue));
+                InsertData(m);
+               queue.DeleteMessage(message);
+                i++;
             }
+           
+            
         }
 
 

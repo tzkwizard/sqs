@@ -57,3 +57,14 @@ C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\WebJob\bin\
 C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\WebJob\bin\Release\zh-Hant\Microsoft.Data.Services.Client.resources.dll
 C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\WebJob\obj\Release\WebJob.exe
 C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\WebJob\obj\Release\WebJob.pdb
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\WebJob\bin\Release\Elasticsearch.Net.dll
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\WebJob\bin\Release\Nest.dll
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\WebJob\bin\Release\Elasticsearch.Net.pdb
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\WebJob\bin\Release\Elasticsearch.Net.xml
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\WebJob\bin\Release\Nest.pdb
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\WebJob\bin\Release\Nest.xml
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\WebJob\obj\Release\WebJob.csprojResolveAssemblyReference.cache
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\WebJob\bin\Release\System.Net.Http.Extensions.dll
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\WebJob\bin\Release\System.Net.Http.Primitives.dll
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\WebJob\bin\Release\System.Net.Http.Extensions.xml
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\WebJob\bin\Release\System.Net.Http.Primitives.xml

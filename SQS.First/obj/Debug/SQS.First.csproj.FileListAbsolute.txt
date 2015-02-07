@@ -13,3 +13,4 @@ C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\SQS.First\b
 C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\SQS.First\bin\Debug\System.Net.Http.Formatting.xml
 C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\SQS.First\bin\Debug\System.Web.Http.xml
 C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\SQS.First\bin\Debug\System.Web.Http.WebHost.xml
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\SQS.First\obj\Debug\SQS.First.csprojResolveAssemblyReference.cache
