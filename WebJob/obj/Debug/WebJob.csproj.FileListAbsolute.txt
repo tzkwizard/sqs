@@ -68,3 +68,6 @@ C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\WebJob\bin\
 C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\WebJob\bin\Debug\System.Net.Http.Primitives.dll
 C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\WebJob\bin\Debug\System.Net.Http.Extensions.xml
 C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\WebJob\bin\Debug\System.Net.Http.Primitives.xml
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\WebJob\bin\Debug\StackExchange.Redis.dll
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\WebJob\bin\Debug\StackExchange.Redis.pdb
+C:\Users\aotuo.zhang\documents\visual studio 2013\Projects\SQS.First\WebJob\bin\Debug\StackExchange.Redis.xml

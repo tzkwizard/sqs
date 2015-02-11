@@ -6,6 +6,7 @@ using Elasticsearch.Net.ConnectionPool;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Queue;
 using Nest;
+using StackExchange.Redis;
 
 namespace WebJob
 {
@@ -14,6 +15,19 @@ namespace WebJob
         public static Uri Node;
         public static ConnectionSettings Settings;
         public static ElasticClient Client;
+
+
+
+
+        public void Redis(string message)
+        {
+
+            ConnectionMultiplexer connection = ConnectionMultiplexer.Connect("avmredis.redis.cache.windows.net,password=L+XyW+nDc0GbQcHaC8g8jpW8ACUuwYcF4wTQmQnsbRo=");
+            IDatabase cache = connection.GetDatabase();
+            cache.ListLeftPush("s", message);
+          
+        }
+
 
         public void CreateIndex(string name)
         {
@@ -38,7 +52,10 @@ namespace WebJob
             string date = DateTime.Now.ToString(CultureInfo.CurrentCulture);
             var newPost = new ActivityLog(message, date, "");
 
-           Client.Index(newPost);
+            Redis(message);
+
+           //Client.Index(newPost);
+
             //Console.WriteLine("message delete and forward");
            //queue.DeleteMessage(message);
         }
