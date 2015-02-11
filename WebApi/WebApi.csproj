@@ -210,6 +210,7 @@
     <Compile Include="App_Data\ICountingKsRepository.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\MyModule.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -262,6 +263,7 @@
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\DiaryEntryModel.cs" />
     <Compile Include="Models\DiaryModel.cs" />
+    <Compile Include="Models\ELSLog.cs" />
     <Compile Include="Models\FoodModel.cs" />
     <Compile Include="Models\MeasureV2Model.cs" />
     <Compile Include="Models\MeasureModel.cs" />

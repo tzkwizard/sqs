@@ -12,11 +12,73 @@ using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Queue;
 using Ninject.Activation;
+using WebApi.Models;
 
 namespace WebApi
 {
     class Queuestore
     {
+        public const string Userlog = "Userlog";
+
+        //Send message
+        public void SendQueueAsyncAll(int num, string responselog)
+        {
+            HttpContext context = HttpContext.Current;
+            ELSLog esLog = new ELSLog();
+            esLog = (ELSLog)context.Items[Userlog];
+            esLog.ElsResponse = responselog;
+
+            /* if (context.Session != null)
+            {
+                esLog = (ELSLog)context.Session[Userlog];
+            }
+            string ipAddress = context.Request.UserHostAddress;
+           IPAddress[] addresslist = Dns.GetHostAddresses(request.Headers.Host);
+             string ad="";
+             foreach (IPAddress ip in addresslist)
+             {
+                 if (ip.AddressFamily == AddressFamily.InterNetwork)
+                 {
+                     ad  += ip.ToString();
+                 }
+             }*/
+            
+            for (var i = 0; i < num; i++)
+            {
+                //task = SendQueueAsync(i,request);
+
+                var i1 = i;
+                Task.Run(() => SendQueueAsync(i1, esLog));
+            }
+
+        }
+
+        public async Task SendQueueAsync(int i, ELSLog esLog)
+        {
+            var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.ConnectionStrings["AzureWebJobsStorage"].ToString());
+            // Create a queue client for interacting with the queue service
+            CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
+
+            String message = "";
+            message += esLog.ElsIpaddress + " - - " + esLog.ElsRequest;
+            //+ request.UserHostAddress + "~~~" + request.RawUrl + "~~~" + request.RequestContext + "~~~" + request.ServerVariables + "~~~" + request.GetBufferedInputStream() + "~~~" + request.RequestType + "~~~" + r;
+
+            CloudQueue queue = queueClient.GetQueueReference("qqwwss");
+            await queue.AddMessageAsync(new CloudQueueMessage(message));
+            Console.WriteLine("message send" + i);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
 
         /// <summary>
         /// Create a queue for the sample application to process messages in. 
@@ -82,53 +144,6 @@ namespace WebApi
             
         }
 
-        //Send message
-        public void SendQueueAsyncAll(int num, HttpRequest request)
-        {
-               HttpContext context = HttpContext.Current;
-            string ipAddress = context.Request.UserHostAddress;
-            /*IPAddress[] addresslist = Dns.GetHostAddresses(request.Headers.Host);
-             string ad="";
-             foreach (IPAddress ip in addresslist)
-             {
-                 if (ip.AddressFamily == AddressFamily.InterNetwork)
-                 {
-                     ad  += ip.ToString();
-                 }
-             }*/
-
-
-            //Task task = SendQueueAsync(4,request);
-            for (var i = 0; i < num; i++)
-            {
-                //task = SendQueueAsync(i,request);
-
-                var i1 = i;
-              Task.Run(() => SendQueueAsync(i1,request,ipAddress));
-            }
-        }
-
-        public async Task SendQueueAsync(int i, HttpRequest request, string r)
-        {
-            var storageAccount = CloudStorageAccount.Parse(ConfigurationManager.ConnectionStrings["AzureWebJobsStorage"].ToString());
-            // Create a queue client for interacting with the queue service
-            CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
-           // HttpRequestHeaders res = request.Headers;
-          //  System.Web.HttpContext context = System.Web.HttpContext.Current;
-          //  string ipAddress = context.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
-            
-            String message = "haha";
-            if (request != null)
-            {
-                
-                message += request.Headers + "~~~";
-                //+ request.UserHostAddress + "~~~" + request.RawUrl + "~~~" + request.RequestContext + "~~~" + request.ServerVariables + "~~~" + request.GetBufferedInputStream() + "~~~" + request.RequestType + "~~~" + r;
-                
-            }
-               CloudQueue queue=queueClient.GetQueueReference("qqwwss");
-                await queue.AddMessageAsync(new CloudQueueMessage(message+"*****"+i));
-                Console.WriteLine("message send"+i);
-        }
 
 
         //get and delete message

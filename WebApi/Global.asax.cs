@@ -8,6 +8,8 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using System.Threading.Tasks;
+using Microsoft.Ajax.Utilities;
+using WebApi.Models;
 
 namespace WebApi
 {
@@ -17,7 +19,7 @@ namespace WebApi
   
     public class WebApiApplication : System.Web.HttpApplication
     {
-        private Type _workerType;
+        public const string Userlog = "Userlog";
 
         protected void Application_Start()
         {
@@ -28,30 +30,29 @@ namespace WebApi
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            Console.WriteLine("hh");
+           // Application["Userlog"] = Userlog;
         }
+
+
+
+      /*  void Application_AcquireRequestState(object sender, EventArgs e)
+        {
+            // Session is Available here
+            HttpContext context = HttpContext.Current;
+            context.Session["foo"] = "foo";
+        }*/
+
+        protected void Application_EndRequest(object sender, EventArgs e)
+        {
+        }
+
 
         protected void Application_BeginRequest(object sender, EventArgs e)
         {
-            HttpContext context = Context;
-            HttpResponse response = context.Response;
-            HttpRequest request = context.Request;
-            HttpWorkerRequest worker = ((IServiceProvider) context).GetService(_workerType) as HttpWorkerRequest;
-            if (worker != null)
-            {
-                string key = worker.GetRawUrl();
-            }
-            HttpRequestMessage requestMessage = context.Items["MS_HttpRequestMessage"] as HttpRequestMessage;
+           
 
+        }
 
-            if (!request.RequestType.Equals("GET"))
-            {
-                Queuestore q = new Queuestore();
-
-               // Task.Run(() =>(q.SendQueueAsyncAll(100,  request)));
-                q.SendQueueAsyncAll(100, request);
-            }
         
-         }
     }
 }

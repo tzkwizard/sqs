@@ -37,7 +37,7 @@ namespace WebApi.Controllers
 
             var response = requestMessage.CreateResponse<Contact>(System.Net.HttpStatusCode.Created, contact);
             
-            HttpRequest request = null;
+           // HttpRequest request = null;
 
             Queuestore q = new Queuestore();
             
@@ -46,8 +46,12 @@ namespace WebApi.Controllers
            // CloudQueue queue = q.CreateQueueAsync(queuename).Result;
          
             int num = Convert.ToInt32(contact.Number);
-           
-            q.SendQueueAsyncAll(num,request);
+
+            string responselog = "";
+             
+
+            
+           q.SendQueueAsyncAll(num, responselog);
             return response;
         }
 

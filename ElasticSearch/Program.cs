@@ -22,12 +22,12 @@ namespace ElasticSearch
             Settings =new ConnectionSettings(Node,defaultIndex:"azure");
             Client =new ElasticClient(Settings);
 
-           // CreateIndex("azure");
+           CreateIndex("azure");
           // InsertData();
 
             //Termquery();
-            MathPhrase();
-            Fillter();
+           // MathPhrase();
+           // Fillter();
             Console.ReadLine();
         }
 
